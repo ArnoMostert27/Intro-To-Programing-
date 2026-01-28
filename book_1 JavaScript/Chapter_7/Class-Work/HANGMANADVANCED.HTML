@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hangman Game</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: linear-gradient(135deg, #1e1e2f, #2b5876);
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .game-container {
+            background: rgba(0, 0, 0, 0.35);
+            padding: 30px 40px;
+            border-radius: 16px;
+            width: 420px;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        h1 {
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+
+        .subtitle {
+            font-size: 14px;
+            opacity: 0.85;
+            margin-bottom: 20px;
+        }
+
+        .word {
+            font-size: 32px;
+            letter-spacing: 10px;
+            margin: 20px 0;
+        }
+
+        .info {
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+        input {
+            padding: 10px;
+            width: 60px;
+            text-align: center;
+            font-size: 18px;
+            border-radius: 8px;
+            border: none;
+            outline: none;
+        }
+
+        button {
+            margin-left: 10px;
+            padding: 10px 16px;
+            font-size: 14px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            background: #00c6ff;
+            color: #000;
+            transition: transform 0.2s, background 0.2s;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            background: #00e0ff;
+        }
+
+        .message {
+            margin-top: 20px;
+            min-height: 20px;
+            font-weight: bold;
+        }
+
+        .hangman {
+            margin: 20px auto;
+            font-family: monospace;
+            white-space: pre;
+            text-align: left;
+            width: 120px;
+        }
+
+        .restart {
+            margin-top: 20px;
+            background: #ff9800;
+        }
+    </style>
+</head>
+<body>
+
+<div class="game-container">
+    <h1>HANGMAN</h1>
+    <div class="subtitle">Guess the word before the man is hanged</div>
+
+    <div class="hangman" id="hangman"></div>
+
+    <div class="word" id="word"></div>
+
+    <div class="info">
+        Guesses left: <span id="guessesLeft"></span>
+    </div>
+
+    <input type="text" id="guessInput" maxlength="1">
+    <button onclick="makeGuess()">Guess</button>
+
+    <div class="message" id="message"></div>
+
+    <button class="restart" onclick="startGame()">Restart Game</button>
+</div>
+
+<script>
+    var words = [
+        "javascript",
+        "monkey",
+        "amazing",
+        "pancake",
+        "developer",
+        "hangman",
+        "function",
+        "variable",
+        "browser",
+        "coding"
+    ];
+
+    var word;
+    var answerArray;
+    var remainingLetters;
+    var maxGuesses = 50;
+    var guessesUsed;
+
+    var hangmanStages = [
+`\n\n\n\n\n_____`,
+` |\n |\n |\n |\n_|___`,
+` ____\n |\n |\n |\n_|___`,
+` ____\n |   |\n |\n |\n_|___`,
+` ____\n |   |\n |   O\n |\n_|___`,
+` ____\n |   |\n |   O\n |   |\n_|___`,
+` ____\n |   |\n |   O\n |  /|\n_|___`,
+` ____\n |   |\n |   O\n |  /|\\\n_|___`,
+` ____\n |   |\n |   O\n |  /|\\\n |  / \n_|___`,
+` ____\n |   |\n |   O\n |  /|\\\n |  / \\n_|___`
+    ];
+
+    function startGame() {
+        word = words[Math.floor(Math.random() * words.length)];
+        answerArray = [];
+        remainingLetters = word.length;
+        guessesUsed = 0;
+
+        for (var i = 0; i < word.length; i++) {
+            answerArray[i] = "_";
+        }
+
+        document.getElementById("message").textContent = "";
+        updateDisplay();
+    }
+
+    function updateDisplay() {
+        document.getElementById("word").textContent = answerArray.join(" ");
+        document.getElementById("guessesLeft").textContent = maxGuesses - guessesUsed;
+        document.getElementById("hangman").textContent = hangmanStages[guessesUsed];
+    }
+
+    function makeGuess() {
+        var input = document.getElementById("guessInput");
+        var guess = input.value.toLowerCase();
+        input.value = "";
+
+        if (!guess.match(/[a-z]/)) {
+            document.getElementById("message").textContent = "Enter a valid letter.";
+            return;
+        }
+
+        var correctGuess = false;
+
+        for (var i = 0; i < word.length; i++) {
+            if (word[i] === guess && answerArray[i] === "_") {
+                answerArray[i] = guess;
+                remainingLetters--;
+                correctGuess = true;
+            }
+        }
+
+        guessesUsed++;
+
+        if (remainingLetters === 0) {
+            document.getElementById("message").textContent = "You win! The word was '" + word + "'.";
+        } else if (guessesUsed >= maxGuesses) {
+            document.getElementById("message").textContent = "Game over! YOU SUCK '" + word + "'.";
+        } else {
+            document.getElementById("message").textContent = correctGuess ? "Correct!" : "Wrong guess.";
+        }
+
+        updateDisplay();
+    }
+
+    startGame();
+</script>
+
+</body>
+</html>
