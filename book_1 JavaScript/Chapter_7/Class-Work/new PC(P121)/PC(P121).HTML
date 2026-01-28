@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hangman!</title>
+
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: linear-gradient(135deg, #1231bd, #1900ff);
+            color: rgb(255, 255, 255);
+            text-align: center;
+            background-color: rgb(0, 38, 255);
+        }
+
+        h1 {
+            margin-top: 40px;
+            font-size: 48px;
+            letter-spacing: 3px;
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
+        }
+
+        .game-box {
+            margin: 30px auto;
+            width: 420px;
+            background: rgba(13, 26, 202, 0.075);
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 12px 26px;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            background: #00e5ff;
+            color: rgb(0, 0, 0);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+        }
+    </style>
+</head>
+<body>
+
+<h1>Hangman!</h1>
+
+<div class="game-box">
+    <p>Guess the word before you run out of chances.</p>
+
+    <!-- PLAY AGAIN BUTTON -->
+    <button onclick="location.reload()">Play Again</button>
+</div>
+
+<script>
+
+console.log('\n', "-------------#1 MORE WORDS------------------");
+
+// All words are lowercase as required
+var words = [
+    "javascript",
+    "monkey",
+    "amazing",
+    "pancake",
+    "developer",
+    "hangman",
+    "function",
+    "variable",
+    "browser",
+    "coding",
+    "computer",
+    "internet",
+    "software",
+    "keyboard",
+    "programming"
+];
+
+// Select a random word from the array
+var word = words[Math.floor(Math.random() * words.length)];
+
+// Create an array to store the player's progress
+// Each letter starts as an underscore (_)
+var answerArray = [];
+for (var i = 0; i < word.length; i++) {
+    answerArray[i] = "_";
+}
+
+// Number of letters still left to guess
+var remainingLetters = word.length;
+
+console.log('\n', "-------------#3 LIMITING GUESSES------------------");
+
+// Maximum number of guesses allowed
+var maxGuesses = 10;
+
+// Tracks how many guesses the player has used
+var guessesUsed = 0;
+
+// MAIN GAME LOOP
+while (remainingLetters > 0 && guessesUsed < maxGuesses) {
+
+    alert(
+        answerArray.join(" ") +
+        "\nGuesses left: " + (maxGuesses - guessesUsed)
+    );
+
+    var guess = prompt("Guess a letter, or click Cancel to stop playing.");
+
+    if (guess === null) {
+        break;
+    }
+
+    console.log('\n', "-------------#2 CAPITAL LETTER FIX------------------");
+
+    // Convert guess to lowercase
+    guess = guess.toLowerCase();
+
+    // Validate input
+    if (guess.length !== 1 || !guess.match(/[a-z]/)) {
+        alert("Please enter a single letter.");
+        continue;
+    }
+
+    var correctGuess = false;
+
+    // Check guessed letter
+    for (var j = 0; j < word.length; j++) {
+
+        console.log('\n', "-------------#4 BUG FIX------------------");
+
+        // BUG FIX: only replace if underscore
+        if (word[j] === guess && answerArray[j] === "_") {
+            answerArray[j] = guess;
+            remainingLetters--;
+            correctGuess = true;
+        }
+    }
+
+    guessesUsed++;
+
+    if (!correctGuess) {
+        alert("YOU BETTER TRY AGAIN!");
+    }
+}
+
+// SHOW FINAL WORD
+alert(answerArray.join(" "));
+
+// GAME RESULT MESSAGE
+if (remainingLetters === 0) {
+    alert("WELL DONE SMARTYPANTS! The answer was \"" + word + "\".");
+} else {
+    alert("OOPS! YOU DIDN'T GET IT, THE WORD WAS \"" + word + "\".");
+}
+
+</script>
+
+</body>
+</html>
