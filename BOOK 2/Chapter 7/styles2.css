@@ -1,0 +1,134 @@
+body {
+    font-family: "Comic Sans MS", cursive, sans-serif;
+}
+
+#robot {
+    position: relative;
+    width: 300px;
+    margin: 50px auto;
+}
+
+/* Head and Facial Features */
+#head {
+    width: 100px;
+    height: 100px;
+    border-radius: 15%;
+    background-color: #dadada;
+    position: absolute;
+    left: 100px;
+    top: 0;
+    border-top: 10px black solid; /* hair */
+}
+
+.eye {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background-color: blue;
+    position: absolute;
+}
+
+#righteye {
+    left: 15%;
+    top: 20%;
+}
+
+#lefteye {
+    left: 60%;
+    top: 20%;
+}
+
+#nose {
+    position: absolute;
+    left: 40%;
+    top: 45%;
+    width: 20%;
+    height: 20%;
+    background-color: black;
+}
+
+#mouth {
+    position: absolute;
+    width: 65%;
+    height: 15%;
+    left: 20%;
+    top: 70%;
+    background-color: red;
+    border-radius: 4px;
+}
+
+/* Neck */
+#neck {
+    position: absolute;
+    top: 100px;
+    left: 45%;
+    width: 10%;
+    height: 20px;
+    background-color: #dadada;
+}
+
+/* Body */
+#body {
+    position: absolute;
+    top: 120px;
+    left: 50px;
+    width: 200px;
+    height: 150px;
+    background-color: #dadada;
+    border: 2px solid black;
+    text-align: center;
+    padding-top: 30px;
+}
+
+/* Arms */
+.arm {
+    position: absolute;
+    top: 130px;
+    width: 20px;
+    height: 80px;
+    background-color: #cacaca;
+}
+
+#rightarm { left: -20px; }
+#leftarm { left: 200px; }
+
+/* Hands */
+.hand {
+    position: absolute;
+    width: 30px;
+    height: 20px;
+    background-color: #ffcc99;
+    top: 210px;
+}
+
+#righthand { left: -25px; }
+#lefthand { left: 200px; }
+
+/* Legs */
+.leg {
+    position: absolute;
+    top: 270px;
+    width: 30px;
+    height: 80px;
+    background-color: #dadada;
+}
+
+#rightleg { left: 50px; }
+#leftleg { left: 150px; }
+
+/* Feet */
+.foot {
+    position: absolute;
+    top: 350px;
+    width: 50px;
+    height: 20px;
+    background-color: black;
+}
+
+#rightfoot { left: 40px; }
+#leftfoot { left: 140px; }
+
+/* Text inside body */
+p {
+    font-size: 1.5em;
+}

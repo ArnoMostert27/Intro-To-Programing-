@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Robot</title>
+    <style>
+        /* HEAD */
+        #head {
+            width: 150px;
+            height: 100px;
+            background-color: #dadada;
+            position: absolute;
+            left: 33%; /* original position restored */
+            top: 5%;   /* original position restored */
+            border: 2px solid black;
+        }
+
+        /* EYES */
+        .eye {
+            width: 30%;
+            height: 30%;
+            border-radius: 50%;
+            background-color: rgb(0, 255, 34);
+            border: 2px solid black;
+            position: absolute;
+        }
+
+        #righteye {
+            left: 20%;
+            top: 20%;
+        }
+
+        #lefteye {
+            left: 60%;
+            top: 20%;
+        }
+
+        /* NOSE */
+        #nose {
+            width: 10%;
+            height: 10%;
+            background-color: black;
+            position: absolute;
+            left: 45%;
+            top: 50%;
+            border: 2px solid black;
+        }
+
+        /* MOUTH */
+        #mouth {
+            width: 65%;
+            height: 15%;
+            background-color: red;
+            position: absolute;
+            left: 20%;
+            top: 70%;
+            border: 2px solid black;
+        }
+
+        /* BODY */
+        #body {
+            width: 200px;
+            height: 250px;
+            background-color: #dadada;
+            position: absolute;
+            left: 25%;
+            top: 35%;
+            text-align: center;
+            padding-top: 30px;
+            border: 2px solid black;
+        }
+
+        /* ARMS */
+        .arm {
+            width: 20px;
+            height: 100px;
+            background-color: #cacaca;
+            position: absolute;
+            border: 2px solid black;
+        }
+
+        /* Left arm stays down */
+        #leftarm {
+            left: 0;
+            top: 35%;
+        }
+
+        /* Right arm “opened” */
+        #rightarm {
+            right: -10%; /* move outside the body to show it raised */
+            top: 15%;   
+        
+            transform-origin: top center;
+        }
+    </style>
+</head>
+
+<body>
+<div id="robot">
+    <div id="head">
+        <div class="eye" id="righteye"></div>
+        <div class="eye" id="lefteye"></div>
+        <div id="nose"></div>
+        <div id="mouth"></div>
+    </div>
+
+    <div id="body">
+        <div class="arm" id="leftarm"></div>
+        <div class="arm" id="rightarm"></div>
+    </div>
+</div>
+</body>
+</html>
