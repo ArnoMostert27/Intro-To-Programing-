@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>BMW Adventure!</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='chap16.css'>
+</head>
+
+<body>
+    <div id="story"></div>
+    <div id="siteFooter">
+        <div id="question"></div>
+        <div id="answer">Enter your answer:
+            <input type="text" id="yourAnswer" />
+            <button type="button" id="submit">Go!</button>
+        </div>
+    </div>
+
+    <!-- Story parts -->
+    <div class="storyPart" id="answer01">
+        <p>Welcome to the BMW Grand Adventure! Lesedi, the legendary coach, calls the team together: "Alright squad, the ultimate BMW race across Turbo Town begins today!"</p>
+        <p>Herbert and Arno, as usual, are already snacking on sandwiches, ignoring the pep talk. Eddie revs silently, glaring at a rival BMW, plotting something clever. Vincent lounges with a cocktail, claiming he's “on vacation.” Ruan and Stefan chill by the pit, while Awonke busts funky moves on the hood of his M3. <span class="keisha">Keisha trips over a toolbox, sending nuts and bolts flying everywhere—classic Keisha!</span></p>
+        <p>Do you race with the team, or take a nap in the pits?</p>
+    </div>
+
+    <div class="storyPart" id="answer02">
+        <p>Answer Yes when you're ready to race!</p>
+    </div>
+
+    <div class="storyPart" id="err0">
+        <p>Please answer yes or no.</p>
+    </div>
+
+    <div class="storyPart" id="answer11">
+        <p>Engines roar, tires squeal. The BMWs zoom across Turbo Town. Lesedi shouts encouragement while trying to dodge Herbert and Arno fighting over the last snack bar. <span class="keisha">Keisha spills a giant smoothie on her own hood but keeps racing anyway.</span></p>
+        <p>Eddie silently knocks rival cars into mud puddles. Vincent sunbathes on his convertible. Awonke spins and grooves. Ruan and Stefan stay calm. Road splits: Funky Forest shortcut, or Highway?</p>
+    </div>
+
+    <div class="storyPart" id="answer12">
+        <p>You chill in the pits. The team zooms past. Herbert and Arno steal snacks. Eddie silently plots revenge. Vincent waves lazily. <span class="keisha">Keisha trips again over a cone and lands in a puddle, but laughs it off.</span></p>
+    </div>
+
+    <div class="storyPart" id="err1">
+        <p>Please answer Shortcut or Highway.</p>
+    </div>
+
+    <div class="storyPart" id="answer21">
+        <p>Funky Forest shortcut. Trees whip past. Herbert & Arno eat donuts mid-race. Eddie disables a rival car. Awonke spins through a flaming loop. Vincent sips from a hammock. Lesedi cheers. <span class="keisha">Keisha accidentally hits a tree branch and bounces like a cartoon ball, causing laughter.</span></p>
+        <p>Rival BMW gang appears. Snack apocalypse. Chaos & hilarity everywhere. Team crosses finish line victorious.</p>
+    </div>
+
+    <div class="storyPart" id="answer22">
+        <p>Highway. Boring but safe. Miss Awonke’s loop-de-loops. Herbert & Arno eat snacks anyway. Vincent complains. Lesedi shakes her head. <span class="keisha">Keisha tries to wave at the rivals, trips, and still somehow makes the finish line!</span></p>
+    </div>
+
+    <div class="storyPart" id="err2">
+        <p>Please answer Funky Forest or Highway.</p>
+    </div>
+
+    <!-- Bonus endings -->
+    <div class="storyPart" id="bonusHerbertArno">
+        <p>Herbert & Arno eat everything. Car tilts. Team laughs hysterically. Lesedi can’t stop laughing.</p>
+    </div>
+
+    <div class="storyPart" id="bonusVincent">
+        <p>Vincent falls asleep mid-highway. BMW drifts perfectly. Wins without moving a wheel. Classic Vincent.</p>
+    </div>
+
+    <div class="storyPart" id="bonusAwonke">
+        <p>Awonke hits perfect funky loop. Hidden shortcut rockets team ahead. Rivals stunned. Epic finish.</p>
+    </div>
+
+    <div class="storyPart" id="bonusKeisha">
+        <p class="keisha">Keisha trips, bounces, and somehow knocks rival cars off course. Everyone laughs hysterically. She may be clumsy, but she saves the day!</p>
+    </div>
+
+    <script src='chap16.js'></script>
+</body>
+</html>
